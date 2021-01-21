@@ -30,3 +30,5 @@ brew-up &lt;command&gt;
   - --remove &lt;package&gt;: remove package from lock file
 ## Important notes
 __DO NOT__ use more than one argument/option, it will malform lock file __UNLESS__ you are using --remove, in which you would not use more than 2 arguments/options.
+
+_3 files, 143 lines, 1 repository, 1 command_
