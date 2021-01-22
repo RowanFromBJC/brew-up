@@ -7,10 +7,12 @@ Install [homebrew](https://brew.sh)
 Make sure Node.JS is installed at `/usr/bin/node`
 
 Make sure there is a copy of bash at `/bin/bash`
+
+Make sure fs is installed in the directory you will be cloning this repository to. (Install fs by installing Node.JS and running `npm init -y && npm i fs`
 ## Installing
-Clone this repository &amp; cd to it
+Clone this repository, cd to it, &amp; chmod it
 ```bash
-git clone https://github.com/RowanFromBJC/brew-up.git && cd brew-up
+git clone https://github.com/RowanFromBJC/brew-up.git && cd brew-up && chmod -R +x ./
 ```
 Add `./bin` to your `$PATH`
 ```bash
