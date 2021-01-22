@@ -24,7 +24,7 @@ clear
 #printf "" > brew.log
 #printf "" > brewout.log
 #printf "" > brewerror.log
-printf "Arguments:\n--new: Create a new lockfile (run before you install anything)\n--help: Display this screen\n--deps: Install deps from lockfile\n<package>: Add package to lockfile\n--remove <package>: Remove package\n\nUSING MORE THAN ONE ARGUMENT WILL MALFORM LOCKFILE, unless all arguments are packages, or the --remove flag is included." > help.txt
+printf "For information go to https://github.com/RowanFromBJC/brew-up/blob/main/README.md#using" > help.txt
 
 # Define functions
 brewErr() { # DEPRECATED
@@ -61,7 +61,12 @@ printf "\033[1;92m==> \033[1;93mArguments: $@\n\n"
 if [[ $@ == *"--new"* ]]; then
 	printf "\033[1;92m==> \033[1;93mCreating new lock file...\n"
 	printf "" > ./brew.lock
+	printf "" > ./brew.tap.lock
 	if ! [[ -f ./brew.lock ]]; then
+		printf "\033[1;91m==> Lockfile not found, exiting...\n"
+		exit 1
+	fi
+	if ! [[ -f ./brew.tap.lock ]]; then
 		printf "\033[1;91m==> Lockfile not found, exiting...\n"
 		exit 1
 	fi
@@ -81,13 +86,30 @@ if [[ "$@" == *"--deps"* ]]; then
 		printf "\033[1;92m==> \033[1;93mRun brew-up --new to create a lockfile"
 		exit 1
 	fi
+	if ! [[ -f ./brew.tap.lock ]]; then
+		printf "\033[1;91m==> Lockfile not found"
+		printf "\033[1;92m==> \033[1;93mRun brew-up --new to create a lockfile"
+		exit 1
+	fi
 	brew install "$(cat brew.lock)"
-	exit 
+	brew tap "$(cat brew.tap.lock)"
+	exit
 fi
 
 if [[ "$@" == *"--remove"* ]]; then
+	if [[ "$@" == *"--remove-tap"* ]]; then
+		$DIR/dev-tap.js $@
+		printf "\n\033[1;92m==> \033[1;93mRemoved\n"
+		exit $?
+	fi
 	$DIR/dev-lock.js $@
 	printf "\n\033[1;92m==> \033[1;93mRemoved\n"
+	exit $?
+fi
+
+if [[ "$@" == *"tap"* ]]; then
+	printf "$2 " >> ./brew.tap.lock
+	printf "\033[1;92m==> \033[1;93mTapped\n"
 	exit $?
 fi
 
