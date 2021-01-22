@@ -28,9 +28,11 @@ brew-up &lt;command&gt;
   - --help: display help screen
   - --new: create / reset lock file
   - &lt;package&gt;: add package to lock file, does NOT install package
-  - --deps: install all packages in lock file
+  - tap &lt;user/repo&gt;: add tap to lock file, does NOT tap.
+  - --deps: install all packages / tap all taps in lock file
   - --remove &lt;package&gt;: remove package from lock file
+  - --remove-tap &lt;user/repo&gt;: remove tap
 ## Important notes
-__DO NOT__ use more than one argument/option, it will malform lock file __UNLESS__ you are using --remove, in which you would not use more than 2 arguments/options.
+__DO NOT__ use more than one argument/option, it will malform lock file __UNLESS__ you are using --remove, --remove-tap, or tap &lt;repo&gt;, in which you would not use more than 2 arguments/options.
 
 _3 files, 143 lines, 1 repository, 1 command_
