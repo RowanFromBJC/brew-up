@@ -14,7 +14,7 @@ Clone this repository, cd to it, &amp; chmod it
 ```bash
 git clone https://github.com/RowanFromBJC/brew-up.git && cd brew-up && chmod -R +x ./
 ```
-Add `./bin` to your `$PATH`
+Add the `bin` directory to your `$PATH`
 ```bash
 export PATH="$(pwd)/bin:$PATH"
 ```
