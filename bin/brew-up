@@ -92,6 +92,7 @@ if [[ "$@" == *"--deps"* ]]; then
 		exit 1
 	fi
 	$DIR/deps.js
+	$DIR/taps.js
 	exit
 fi
 
