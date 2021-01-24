@@ -4,7 +4,7 @@ var taps = fs.readFileSync('./brew.tap.lock', 'utf8');
 var tapList = '[';
 taps = taps.replace(' ', '');
 while (taps != '') {
-	tapList = tapList + '\'' + taps.substring(0, taps.indexOf(' ') - 1) + '\'';
+	tapList = tapList + '\'' + taps.substring(0, taps.indexOf('\n') - 1) + '\'';
 	taps.replace(taps.substring(0, taps.indexOf(' ') - 1), '');
 	if (taps != '') {
 		tapList = tapList + ', ';
