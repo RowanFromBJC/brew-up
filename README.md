@@ -8,7 +8,7 @@ Make sure Node.JS is installed at `/usr/bin/node`
 
 Make sure there is a copy of bash at `/bin/bash`
 
-Make sure fs is installed in the directory you will be cloning this repository to. (Install fs by installing Node.JS and running `npm init -y && npm i fs`
+Make sure fs and shelljs are installed in the directory you will be cloning this repository to. (Install fs &amp; helljs by installing Node.JS and running `npm init -y && npm i fs && npm i shelljs`
 ## Installing
 Clone this repository, cd to it, &amp; chmod it
 ```bash
