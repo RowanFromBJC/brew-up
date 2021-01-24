@@ -108,7 +108,7 @@ if [[ "$@" == *"--remove"* ]]; then
 fi
 
 if [[ "$@" == *"tap"* ]]; then
-	printf "$2 " >> ./brew.tap.lock
+	printf " $2" >> ./brew.tap.lock
 	printf "\033[1;92m==> \033[1;93mTapped\n"
 	exit $?
 fi
@@ -118,6 +118,6 @@ if ! [[ -f ./brew.lock ]]; then
 	printf "\033[1;92m==> \033[1;93mRun brew-up --new to create a lockfile"
 	exit 1
 else
-	printf "$@ " >> brew.lock
+	printf " $@" >> brew.lock
 	printf "\033[1;92m==> \033[1;93mAdded\n"
 fi
