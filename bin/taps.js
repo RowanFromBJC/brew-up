@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const shell = require('shelljs');
 const fs = require('fs');
 var taps = fs.readFileSync('./brew.tap.lock', 'utf8');
