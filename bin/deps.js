@@ -1,8 +1,11 @@
 #!/usr/bin/node
-const shell = require('shelljs');
 const fs = require('fs');
-var deps = fs.readFileSync('./brew.lock', 'utf8');
-if (deps != '' && deps != ' ') {
-	deps = deps.replace(' ', '');
-	shell.exec('brew install ' + deps);
-}
+const shell = require('shelljs');
+var taps = fs.readFileSync('brew.tap.lock', 'utf8').split(' ');
+taps.pop();
+taps.join(' ');
+shell.exec('brew tap ' + taps);
+var pkgs = fs.readFileSync('brew.lock', 'utf8').split(' ');
+pkgs.pop();
+pkgs.join(' ');
+shell.exec('brew install ' + pkgs);
